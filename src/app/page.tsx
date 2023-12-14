@@ -1,5 +1,6 @@
 "use client";
 
+import { Navbar } from "@/components/common/Navbar";
 import { useHook } from "@/hooks/useHook";
 import { useTestStore } from "@/store/testStore";
 import Link from "next/link";
@@ -17,11 +18,12 @@ export default function Home() {
   }, [increment]);
 
   return (
-    <main className="flex min-h-screen flex-col h-full bg-black text-white items-center justify-center">
-      <p>hello: {count}</p>
+    <main className="min-h-screen h-full dark:bg-black bg-white">
+      <Navbar />
+      {/* <p>hello: {count}</p>
       <button onClick={() => increment()}>add</button>
       <Link href={"/dashboard"}>dashboard(link)</Link>
-      <button onClick={() => router.push("/dashboard")}>dashboard(router)</button>
+      <button onClick={() => router.push("/dashboard")}>dashboard(router)</button> */}
     </main>
   );
 }
