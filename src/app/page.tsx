@@ -1,5 +1,13 @@
-"use client";
+import { Banner } from "@/components/common/Banner";
+import { Catalog } from "@/components/common/Catalog";
+import { Navbar } from "@/components/common/Navbar";
 
 export default function Home() {
-  return <main className="min-h-screen h-full dark:bg-black bg-white">hi</main>;
+  return (
+    <main className="h-full min-h-screen bg-white dark:bg-black">
+      <Navbar />
+      <Banner />
+      <Catalog />
+    </main>
+  );
 }
