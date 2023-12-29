@@ -1,4 +1,4 @@
-import { ToggleTheme } from "../ToggleTheme";
+import { ToggleTheme } from "./ToggleTheme";
 
 export const Navbar: React.FC = () => {
   return (
