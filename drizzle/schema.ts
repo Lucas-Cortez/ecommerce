@@ -1,13 +1,21 @@
 import type { AdapterAccount } from "@auth/core/adapters";
 import { timestamp, pgTable, text, primaryKey, integer } from "drizzle-orm/pg-core";
+import { v4 as uuidv4 } from "uuid";
 
 export const users = pgTable("user", {
-  id: text("id").notNull().primaryKey(),
+  id: text("id")
+    .notNull()
+    .primaryKey()
+    .$defaultFn(() => uuidv4()),
   name: text("name"),
-  email: text("email").notNull(),
+  email: text("email").unique().notNull(),
+  password: text("password"),
   emailVerified: timestamp("emailVerified", { mode: "date" }),
   image: text("image"),
 });
+
+export type User = typeof users.$inferSelect;
+export type UserInsert = typeof users.$inferInsert;
 
 export const accounts = pgTable(
   "account",
@@ -31,22 +39,24 @@ export const accounts = pgTable(
   }),
 );
 
-export const sessions = pgTable("session", {
-  sessionToken: text("sessionToken").notNull().primaryKey(),
-  userId: text("userId")
-    .notNull()
-    .references(() => users.id, { onDelete: "cascade" }),
-  expires: timestamp("expires", { mode: "date" }).notNull(),
-});
+export type Account = typeof accounts.$inferSelect;
 
-export const verificationTokens = pgTable(
-  "verificationToken",
-  {
-    identifier: text("identifier").notNull(),
-    token: text("token").notNull(),
-    expires: timestamp("expires", { mode: "date" }).notNull(),
-  },
-  (vt) => ({
-    compoundKey: primaryKey({ columns: [vt.identifier, vt.token] }),
-  }),
-);
+// export const sessions = pgTable("session", {
+//   sessionToken: text("sessionToken").notNull().primaryKey(),
+//   userId: text("userId")
+//     .notNull()
+//     .references(() => users.id, { onDelete: "cascade" }),
+//   expires: timestamp("expires", { mode: "date" }).notNull(),
+// });
+
+// export const verificationTokens = pgTable(
+//   "verificationToken",
+//   {
+//     identifier: text("identifier").notNull(),
+//     token: text("token").notNull(),
+//     expires: timestamp("expires", { mode: "date" }).notNull(),
+//   },
+//   (vt) => ({
+//     compoundKey: primaryKey({ columns: [vt.identifier, vt.token] }),
+//   }),
+// );

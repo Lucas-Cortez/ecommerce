@@ -8,6 +8,41 @@
       "when": 1704250987677,
       "tag": "0000_awesome_sally_floyd",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1704306949957,
+      "tag": "0001_spooky_jack_power",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1704310565586,
+      "tag": "0002_narrow_microbe",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "5",
+      "when": 1704311006370,
+      "tag": "0003_shiny_power_man",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "5",
+      "when": 1704312114527,
+      "tag": "0004_keen_frightful_four",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "5",
+      "when": 1704329135380,
+      "tag": "0005_faithful_tomorrow_man",
+      "breakpoints": true
     }
   ]
 }

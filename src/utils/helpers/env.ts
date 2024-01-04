@@ -5,7 +5,7 @@ const parsedClientEnv = envClientSchema.safeParse(process.env);
 if (!parsedClientEnv.success) {
   console.error("\x1b[33m%s\x1b[0m", "❌ Invalid client environment variables:");
 
-  console.log("\x1b[31m%s\x1b[0m", [Object.keys(parsedClientEnv.error.flatten().fieldErrors).join(", ")]);
+  console.error(parsedClientEnv.error.flatten().fieldErrors);
   throw new Error("Invalid client environment variables");
 }
 
@@ -18,9 +18,7 @@ const parsedServerEnv = envServerSchema.safeParse(process.env);
 if (!parsedServerEnv.success) {
   console.error("\x1b[33m%s\x1b[0m", "❌ Invalid server environment variables:");
 
-  console.log(parsedServerEnv.error.issues);
-
-  console.log("\x1b[31m%s\x1b[0m", [Object.keys(parsedServerEnv.error.flatten().fieldErrors).join(", ")]);
+  console.error(parsedServerEnv.error.flatten().fieldErrors);
   throw new Error("Invalid server environment variables");
 }
 
